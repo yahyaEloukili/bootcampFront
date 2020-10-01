@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "bootcampFront"
+    }
+  },
+  "defaultProject": "bootcampFront",
+  "cli": {
+    "analytics": "2c96af48-eab4-45c7-8482-f63f310f5ec8"
+  }
 }
