@@ -3,6 +3,6 @@ export interface User {
   email,
   password,
   confirmPassword,
-  roles_id
+  role
 
 }

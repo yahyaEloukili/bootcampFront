@@ -1,0 +1,61 @@
+<section class="bootcamp mt-5">
+  <div class="container">
+    <div class="row">
+      <!-- Main col -->
+      <div class="col-md-8">
+        <h1>{{bootcamp?.name}}</h1>
+        <!-- Description -->
+        <p>{{bootcamp?.description}}</p>
+        <!-- Avg cost -->
+        <p class="lead mb-4">Average Course Cost: <span class="text-primary">${{bootcamp?.averageCost}}</span></p>
+        <!-- Courses -->
+        <div class="card mb-3" *ngFor="let course of bootcamp?.courses">
+          <h5 class="card-header bg-primary text-white">{{course.title}}</h5>
+          <div class="card-body">
+            <h5 class="card-title">Duration: {{course.weeks}} Weeks</h5>
+            <p class="card-text">{{course.description}}</p>
+            <ul class="list-group mb-3">
+              <li class="list-group-item">Cost: ${{course.tuition}} USD</li>
+              <li class="list-group-item">Skill Required: {{course.minimumSkill}}</li>
+              <li class="list-group-item">Scholarship Available: <i *ngIf="!course.scholarshipAvailable"
+                  class="fas fa-times text-danger"></i> <i *ngIf="course.scholarshipAvailable"
+                  class="fas fa-check text-success"></i></li>
+            </ul>
+          </div>
+        </div>
+
+
+      </div>
+      <!-- Sidebar -->
+      <div class="col-md-4">
+        <!-- Image -->
+        <!-- <img src="img/image_1.jpg" class="img-thumbnail" alt=""> -->
+        <!-- Rating -->
+        <h1 class="text-center my-4"><span class="badge badge-secondary badge-success rounded-circle p-3">8.8</span>
+          Rating</h1>
+        <!-- Buttons -->
+        <a href="javascript:" (click)="readReview()" class="btn btn-dark btn-block my-3"><i class="fas fa-comments"></i>
+          Read Reviews</a>
+        <a href="javascript:" (click)="addReview()" class="btn btn-light btn-block my-3"><i
+            class="fas fa-pencil-alt"></i> Write a
+          Review</a>
+        <a href="#" target="_blank" class="btn btn-secondary btn-block my-3"><i class="fas fa-globe"></i> Visit
+          Website</a>
+        <!-- Map -->
+        <div id='map' style='width: 100%; height: 300px;'></div>
+        <!-- Perks -->
+        <ul class="list-group list-group-flush mt-4">
+          <li class="list-group-item"><i *ngIf="!bootcamp?.housing" class="fas fa-times text-danger"></i> <i
+              *ngIf="bootcamp?.housing" class="fas fa-check text-success"></i> Housing</li>
+          <li class="list-group-item"><i *ngIf="!bootcamp?.jobAssistance" class="fas fa-times text-danger"></i> <i
+              *ngIf="bootcamp?.jobAssistance" class="fas fa-check text-success"></i> Job Assistance</li>
+
+          <li class="list-group-item"><i *ngIf="!bootcamp?.jobGuarantee" class="fas fa-times text-danger"></i> <i
+              *ngIf="bootcamp?.jobGuarantee" class="fas fa-check text-success"></i>Job Guarantee</li>
+          <li class="list-group-item"><i *ngIf="!bootcamp?.acceptGi" class="fas fa-times text-danger"></i> <i
+              *ngIf="bootcamp?.acceptGi" class="fas fa-check text-success"></i>Accepts GI Bill</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

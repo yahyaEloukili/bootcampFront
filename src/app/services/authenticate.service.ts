@@ -1,20 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelper } from 'angular2-jwt';
 import { Router } from '@angular/router';
+import { RequestOptions } from '@angular/http';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticateService {
 
-  public host: string = "http://localhost:8080";
+  public host: string = "http://localhost:5000/api/v1/auth";
   private roles: Array<any>;
   jwtToken: string;
   constructor(private http: HttpClient, private router: Router) { }
   public authenticate(user) {
-    return this.http.post(this.host + "/login", user, { observe: 'response' });
+    return this.http.post(this.host + "/login", user);
   }
+
   public register(user) {
+    // const httpOptions = {
+
+    //   withCredentials: true,
+    //   credentials: 'include',
+
+    //   observe: 'response' as 'response'
+    // };
+
     return this.http.post(this.host + "/register", user);
   }
 
@@ -29,7 +39,6 @@ export class AuthenticateService {
 
   isUserLoggedIn() {
     let user = localStorage.getItem("token");
-
     if (user) {
       return true;
     }

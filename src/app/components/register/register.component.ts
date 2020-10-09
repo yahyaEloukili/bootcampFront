@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
     email: "",
     password: "",
     confirmPassword: "",
-    roles_id: ""
+    role: ""
   }
   verify;
   emailError: boolean;
@@ -22,11 +22,11 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
   submitForm(userForm: NgForm) {
-    this.user = userForm.value;
-    this.user.roles_id = Array.from(String(userForm.value.roles_id));
-    console.log(userForm.value.roles_id);
+
+    // this.user.roles_id = Array.from(String(userForm.value.roles_id));
+    // console.log(userForm.value.roles_id);
     if (userForm.valid) {
-      this.authenticateService.register(this.user).subscribe(resp => {
+      this.authenticateService.register(userForm.value).subscribe(resp => {
         this.emailError = false;
         this.verify = false;
         userForm.reset();

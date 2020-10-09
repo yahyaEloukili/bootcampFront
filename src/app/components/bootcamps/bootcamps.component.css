@@ -1,0 +1,10 @@
+.clickable {
+  cursor:pointer;
+  color: orangered;
+}
+.bg-click{
+  background-color: #e2dbdb;
+}
+.click{
+  cursor: default;
+}

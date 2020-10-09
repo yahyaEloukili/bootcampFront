@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticateService } from "../../services/authenticate.service";
 @Component({
   selector: 'app-login',
@@ -13,13 +14,16 @@ export class LoginComponent implements OnInit {
   }
   verify: boolean;
   badCredentiels: boolean;
-  constructor(private authenticateService: AuthenticateService) { }
+  constructor(private authenticateService: AuthenticateService, private router: Router) { }
   submitForm(form: NgForm) {
     if (form.valid) {
       this.authenticateService.authenticate(form.value).subscribe(resp => {
+        this.router.navigateByUrl("bootcamps");
         this.verify = false;
-        let jwt = resp.headers.get('Authorization');
-        this.authenticateService.saveToken(jwt);
+        let jwt = resp["token"];
+        this.authenticateService.saveToken(`Bearer ${jwt}`);
+        form.reset();
+
 
       }, err => {
         if (err.status = 403)
@@ -34,6 +38,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.authenticateService.isUserLoggedIn()) {
+      this.router.navigateByUrl("bootcamps");
+    }
   }
 
 }
