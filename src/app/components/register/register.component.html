@@ -19,7 +19,7 @@
                 <label for="name">Name</label>
                 <input type="text" name="name" class="form-control" placeholder="Enter full name"
                   [(ngModel)]="user.name" #name="ngModel" [ngClass]="{
-                  'is-invalid': (name.errors && (name.touched || verify))
+                  'is-invalid': (name.errors && (name.touched || name.dirty || verify))
                 }" required />
                 <span class="invalid-feedback" [hidden]="!name.errors?.required">
                   Name is required
@@ -29,7 +29,7 @@
                 <label for="email">Email Address</label>
                 <input type="email" name="email" class="form-control" placeholder="Enter email" [(ngModel)]="user.email"
                   #email="ngModel" [ngClass]="{
-                  'is-invalid': (email.errors && (email.touched || verify))
+                  'is-invalid': (email.errors && (email.touched || email.dirty || verify))
                 }" required email />
                 <span class="invalid-feedback" [hidden]="!email.errors?.required">
                   Email is required
@@ -42,12 +42,12 @@
                 <label for="password">Password</label>
                 <input type="password" name="password" class="form-control" placeholder="Enter password"
                   [(ngModel)]="user.password" #password="ngModel" [ngClass]="{
-                  'is-invalid': (password.errors && (password.touched || verify))
+                  'is-invalid': (password.errors && (password.touched ||  password.dirty || verify))
                 }" required minlength="6" />
-                <span class="invalid-feedback" [hidden]="!email.errors?.required">
+                <span class="invalid-feedback" [hidden]="!password.errors?.required">
                   Password is required
                 </span>
-                <span class="invalid-feedback" [hidden]="!email.errors?.minlength">
+                <span class="invalid-feedback" [hidden]="!password.errors?.minlength">
                   Password must be at least 6 characters
                 </span>
               </div>
@@ -55,12 +55,12 @@
                 <label for="password2">Confirm Password</label>
                 <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm password"
                   [(ngModel)]="user.confirmPassword" #confirmPassword="ngModel" [ngClass]="{
-                  'is-invalid': (confirmPassword.errors && (confirmPassword.touched || verify))
+                  'is-invalid': (confirmPassword.errors && (confirmPassword.touched ||confirmPassword.dirty|| verify))
                 }" required minlength="6" />
-                <span class="invalid-feedback" [hidden]="!email.errors?.required">
+                <span class="invalid-feedback" [hidden]="!confirmPassword.errors?.required">
                   Confirm password is required
                 </span>
-                <span class="invalid-feedback" [hidden]="!email.errors?.minlength">
+                <span class="invalid-feedback" [hidden]="!confirmPassword.errors?.minlength">
                   Confirm password must be at least 6 characters
                 </span>
               </div>

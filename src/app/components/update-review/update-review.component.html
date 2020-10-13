@@ -10,9 +10,9 @@
           <p>
             You must have attended and graduated this bootcamp to review
           </p>
-          <form #form="ngForm" (ngSubmit)="addReview(form)">
+          <form #form="ngForm" (ngSubmit)="updateReview(form)">
             <div class="form-group">
-              <label for="rating">Rating: <span class="text-primary">8</span></label>
+              <label for="rating">Rating: <span class="text-primary">{{review.rating}}</span></label>
               <input type="range" class="custom-range" name="rating" min="1" max="10" step="1" value="8"
                 [(ngModel)]="review.rating" (ngModelChange)="setRating($event)" id="rating" />
             </div>

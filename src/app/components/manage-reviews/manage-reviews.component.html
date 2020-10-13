@@ -13,26 +13,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>DevWorks Bootcamp</td>
-                <td>10</td>
+              <tr *ngFor="let review of reviews">
+                <td>{{review.title}}</td>
+                <td>{{review.rating}}</td>
                 <td>
-                  <a href="add-review.html" class="btn btn-secondary"><i class="fas fa-pencil-alt"></i></a>
-                  <button class="btn btn-danger">
+                  <a class="btn btn-secondary" href="javascript:" (click)="updateReview(review._id)"><i
+                      class="fas fa-pencil-alt"></i></a>
+                  <button href="javascript:" (click)="deleteReview(review._id)" class="btn btn-danger">
                     <i class="fas fa-times"></i>
                   </button>
                 </td>
               </tr>
-              <tr>
-                <td>Codemasters</td>
-                <td>7</td>
-                <td>
-                  <a href="add-review.html" class="btn btn-secondary"><i class="fas fa-pencil-alt"></i></a>
-                  <button class="btn btn-danger">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </td>
-              </tr>
+
             </tbody>
           </table>
         </div>

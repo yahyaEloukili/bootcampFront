@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthenticateService } from 'src/app/services/authenticate.service';
 import { ResourceServiceService } from "../../services/resource-service.service";
 @Component({
   selector: 'app-bootcamps',
@@ -16,9 +17,13 @@ export class BootcampsComponent implements OnInit {
   miles;
   zipcode;
   noPagination: boolean;
-  constructor(private resouceService: ResourceServiceService, private router: Router) { }
+  constructor(private resouceService: ResourceServiceService, private router: Router, private authenticateService: AuthenticateService) { }
 
   ngOnInit(): void {
+
+    // this.resouceService.getResourceById("users", this.authenticateService.getLoggedInUser().id).subscribe(res => {
+    //   console.log(res);
+    // })
     if (localStorage.getItem("distance")) {
       this.findByLocation2(localStorage.getItem("zipcode"), localStorage.getItem("distance"))
     } else {

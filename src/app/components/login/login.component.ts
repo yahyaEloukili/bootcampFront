@@ -42,5 +42,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl("bootcamps");
     }
   }
-
+  resetPassword() {
+    this.router.navigateByUrl("resetPassword");
+  }
 }

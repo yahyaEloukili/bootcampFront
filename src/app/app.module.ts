@@ -20,6 +20,7 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { UpdateReviewComponent } from './components/update-review/update-review.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     ReviewsComponent,
     AddCourseComponent,
     UpdatePasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    UpdateReviewComponent
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ import { AddReviewsComponent } from "./components/add-reviews/add-reviews.compon
 import { ReviewsComponent } from "./components/reviews/reviews.component";
 import { AddCourseComponent } from "./components/add-course/add-course.component";
 import { UpdatePasswordComponent } from "./components/update-password/update-password.component";
+import { UpdateReviewComponent } from "./components/update-review/update-review.component";
 import { ResetPasswordComponent } from "./components/reset-password/reset-password.component";
 
 const routes: Routes = [
@@ -23,14 +24,15 @@ const routes: Routes = [
   { component: BootcampsComponent, path: "bootcamps" },
   { component: AddBootcampComponent, path: "addBootcamp" },
   { component: BootcampDetailComponent, path: "bootcampDetail/:id" },
-  { component: MangeBootcampComponent, path: "manageBootcamp/:id" },
+  { component: MangeBootcampComponent, path: "manageBootcamp" },
   { component: ManageCoursesComponent, path: "manageCourses/:id" },
   { component: ManageReviewsComponent, path: "manageReviews" },
   { component: ManageAccountComponent, path: "manageAccount" },
   { component: AddReviewsComponent, path: "addReviews/:id" },
-  { component: ReviewsComponent, path: "reviews" },
-  { component: AddCourseComponent, path: "addCourse" },
-  { component: UpdatePasswordComponent, path: "updatePassword" },
+  { component: UpdateReviewComponent, path: "updateReview/:id" },
+  { component: ReviewsComponent, path: "reviews/:id" },
+  { component: AddCourseComponent, path: "addCourse/:id" },
+  { component: UpdatePasswordComponent, path: "resetpassword/:token" },
   { component: ResetPasswordComponent, path: "resetPassword" },
 ];
 

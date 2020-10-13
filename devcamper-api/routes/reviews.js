@@ -18,17 +18,16 @@ router
   .route('/')
   .get(
     advancedResults(Review, {
-      path: 'bootcamp',
-      select: 'name description'
+      path: 'user'
     }),
     getReviews
   )
-  .post(protect, authorize('user', 'admin'), addReview);
+  .post(protect, addReview);
 
 router
   .route('/:id')
   .get(getReview)
-  .put(protect, authorize('user', 'admin'), updateReview)
-  .delete(protect, authorize('user', 'admin'), deleteReview);
+  .put(protect, updateReview)
+  .delete(protect, deleteReview);
 
 module.exports = router;

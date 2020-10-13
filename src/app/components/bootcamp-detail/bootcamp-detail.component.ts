@@ -17,13 +17,13 @@ export class BootcampDetailComponent implements OnInit {
       this.bootcamp = resp["data"];
       console.log(this.bootcamp);
     })
-
+    console.log(this.route.snapshot.params["id"]);
   }
   addReview() {
-    this.router.navigateByUrl("addReviews/1");
+    this.router.navigateByUrl(`addReviews/${this.route.snapshot.params["id"]}`);
   }
   readReview() {
-    this.router.navigateByUrl("reviews");
+    this.router.navigateByUrl(`reviews/${this.route.snapshot.params["id"]}`);
   }
 
 }

@@ -18,7 +18,7 @@
                 <label for="email">Email Address</label>
                 <input type="email" name="email" class="form-control" placeholder="Enter email" [(ngModel)]="user.email"
                   #email="ngModel" [ngClass]="{
-                  'is-invalid': (email.errors && (email.touched || verify ))
+                  'is-invalid': (email.errors && (email.touched || email.dirty || verify ))
                 }" required email />
                 <span class="invalid-feedback" [hidden]="!email.errors?.required">
                   Email is required
@@ -31,7 +31,7 @@
                 <label for="password">Password</label>
                 <input type="password" name="password" class="form-control" placeholder="Enter password"
                   [(ngModel)]="user.password" #password="ngModel" [ngClass]="{
-                    'is-invalid': (password.errors && (password.touched || verify))
+                    'is-invalid': (password.errors && (password.touched || password.dirty || verify))
                   }" required minlength="6" />
                 <span class="invalid-feedback" [hidden]="!password.errors?.required">
                   Password is required
@@ -44,7 +44,7 @@
                 <input type="submit" value="login" class="btn btn-primary btn-block" />
               </div>
             </form>
-            <p> Forgot Password? <a href="reset-password.html">Reset Password</a></p>
+            <p> Forgot Password? <a href="javascript:" (click)="resetPassword()">Reset Password</a></p>
           </div>
         </div>
       </div>

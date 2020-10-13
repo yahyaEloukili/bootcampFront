@@ -15,7 +15,18 @@ export class AuthenticateService {
   public authenticate(user) {
     return this.http.post(this.host + "/login", user);
   }
-
+  //POST /api/v1/auth/forgotpassword
+  public resetPassword(form) {
+    return this.http.post(this.host + "/forgotpassword", form);
+  }
+  public getMe() {
+    return this.http.get(`${this.host}/me`, { headers: new HttpHeaders({ 'authorization': localStorage.getItem("token") }) })
+  }
+  // @route     PUT /api/v1/auth/resetpassword/:resettoken
+  public updatePassword(password, resetToken) {
+    console.log(password);
+    return this.http.put(this.host + `/resetpassword/${resetToken}`, password);
+  }
   public register(user) {
     // const httpOptions = {
 
@@ -66,9 +77,11 @@ export class AuthenticateService {
     }
   }
   getLoggedInUser() {
+
     this.jwtToken = localStorage.getItem("token");
     let jwtHelper = new JwtHelper();
     return jwtHelper.decodeToken(this.jwtToken);
+
   }
   isPublisher() {
     this.jwtToken = localStorage.getItem("token");

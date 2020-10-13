@@ -9,7 +9,7 @@ const Bootcamp = require('../models/Bootcamp');
 // @access    Public
 exports.getReviews = asyncHandler(async (req, res, next) => {
   if (req.params.bootcampId) {
-    const reviews = await Review.find({ bootcamp: req.params.bootcampId });
+    const reviews = await Review.find({ bootcamp: req.params.bootcampId }).populate('user');
 
     return res.status(200).json({
       success: true,
@@ -81,7 +81,8 @@ exports.updateReview = asyncHandler(async (req, res, next) => {
   }
 
   // Make sure review belongs to user or user is admin
-  if (review.user.toString() !== req.user.id && req.user.role !== 'admin') {
+  // && req.user.role !== 'admin'
+  if (review.user.toString() !== req.user.id) {
     return next(new ErrorResponse(`Not authorized to update review`, 401));
   }
 
@@ -109,7 +110,8 @@ exports.deleteReview = asyncHandler(async (req, res, next) => {
   }
 
   // Make sure review belongs to user or user is admin
-  if (review.user.toString() !== req.user.id && req.user.role !== 'admin') {
+  // && req.user.role !== 'admin'
+  if (review.user.toString() !== req.user.id) {
     return next(new ErrorResponse(`Not authorized to update review`, 401));
   }
 
